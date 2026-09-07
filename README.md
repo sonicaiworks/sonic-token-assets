@@ -7,7 +7,7 @@ Token Standard: Token-2022
 
 > SONIC is the native Token-2022 asset of SONIC NETWORK, designed for creator rewards, ecosystem participation, tokenized content, platform utility, and on-chain creator commerce.
 
-Token specification
+## Token specification
 
 |Property                              |Value                   |
 |--------------------------------------|------------------------|
@@ -26,7 +26,7 @@ Token specification
 |Lock infrastructure                   |**Streamflow Finance**  |
 |Streamflow contract / stream ID       |**TBA**                 |
 
-Supply accounting
+## Supply accounting
 
 SONIC treats these states separately:
 
@@ -50,7 +50,7 @@ Distribution
 
 > **3,000,000,000 SONIC (16.26% of initial maximum supply)** is designated for Streamflow-based locking. This is a supply state, not an additional allocation. Source allocation(s), lock type, dates and verified on-chain identifier remain TBA.
 
-Token-2022 transfer fee
+## Token-2022 transfer fee
 
 Applicable SONIC transfers use a 3% / 300 bps Token-2022 transfer fee.
 
@@ -69,7 +69,7 @@ Production deployment must publish:
 • withdraw-withheld authority
 • verified mint address
 
-Quarterly burn
+## Quarterly burn
 
 SONIC has a 2% quarterly burn policy.
 
@@ -81,7 +81,7 @@ SCHEDULED → CALCULATED → AUTHORIZED → SUBMITTED → CONFIRMED → BURNED �
 
 Every burn should publish the burn amount, calculation base, supply before/after, transaction signature, authority and confirmation timestamp.
 
-Locked supply
+## Locked supply
 
 3,000,000,000 SONIC is designated for lock/vesting infrastructure through Streamflow Finance.
 
@@ -106,7 +106,7 @@ ESTIMATED → ELIGIBLE → ALLOCATED → CLAIMABLE → SUBMITTED → CONFIRMED �
 
 Leaderboard position, engagement, token ownership, or community participation alone does not create an entitlement. Eligibility and a funded allocation are required.
 
-Fee separation
+## Fee separation
 
 |Fee domain                   |Policy                 |
 |-----------------------------|----------------------:|
@@ -119,7 +119,7 @@ Fee separation
 
 The checkout and transaction UI should quote each fee separately before wallet signature.
 
-Authority matrix
+## Authority matrix
 
 |Authority                    |Production value|
 |-----------------------------|----------------|
@@ -132,6 +132,6 @@ Authority matrix
 
 If SONIC is presented as fixed-supply after genesis, the production documentation should state whether the mint authority is revoked after the intended supply is minted.
 
-Production status
+## Production status
 
 SONIC is currently documented as pre-deployment. The mint address, Streamflow identifier, Token-2022 authorities, maximum transfer fee, decimals, quarterly burn calculation base, lock schedule and related transaction references must be published only after deployment and verification.
