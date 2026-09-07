@@ -1,4 +1,4 @@
-SONIC Tokenomics
+# SONIC Tokenomics
 
 Version: 1.0.0
 Status: Pre-deployment
