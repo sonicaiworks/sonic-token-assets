@@ -18,6 +18,18 @@
       "value": 9
     },
     {
+      "trait_type": "Transfer Fee",
+      "value": "2% / 200 bps"
+    },
+    {
+      "trait_type": "Transfer Fee Policy Cap",
+      "value": "5% / 500 bps"
+    },
+    {
+      "trait_type": "Utility",
+      "value": "Creator rewards, governance, staking, access, commerce, fees, licensing, and ecosystem participation"
+    },
+    {
       "trait_type": "Version",
       "value": "1.0.0"
     },
@@ -45,6 +57,67 @@
     "github": "https://github.com/sonicaiworks",
     "documentation": "https://docs.sonicnetwork.app",
     "application": "https://sonicnetwork.app",
-    "platform": "https://studio.sonicnetwork.app"
+    "platform": "https://studio.sonicnetwork.app",
+    "transfer_fee": {
+      "standard": "Token-2022",
+      "enabled": true,
+      "basis_points": 200,
+      "percent": 2,
+      "policy_cap_basis_points": 500,
+      "policy_cap_percent": 5,
+      "maximum_fee_amount": null,
+      "maximum_fee_status": "set-at-deployment"
+    },
+    "utility": {
+      "creator_rewards": {
+        "enabled": true,
+        "description": "Reward eligible creators, contributors, collaborators, and community participants from funded SONIC reward allocations."
+      },
+      "staking": {
+        "enabled": true,
+        "description": "Stake SONIC for protocol participation, ecosystem incentives, and configurable lock-based reward programs."
+      },
+      "governance": {
+        "enabled": true,
+        "description": "Participate in eligible SONIC governance proposals, voting, delegation, and policy decisions."
+      },
+      "platform_access": {
+        "enabled": true,
+        "description": "Unlock token-gated platform features, creator tools, experiences, releases, communities, and premium ecosystem access."
+      },
+      "creator_commerce": {
+        "enabled": true,
+        "description": "Use SONIC in creator marketplace purchases, direct-to-fan commerce, tipping, subscriptions, collectibles, and digital goods."
+      },
+      "licensing": {
+        "enabled": true,
+        "description": "Support on-chain creator licensing, usage rights, permissions, and royalty-linked workflows where enabled."
+      },
+      "tokenized_content": {
+        "enabled": true,
+        "description": "Participate in SONIC tokenized music, media, creator assets, memberships, editions, and collectible experiences."
+      },
+      "fees": {
+        "enabled": true,
+        "description": "SONIC uses Token-2022 transfer-fee mechanics and may be used for protocol or product fee settlement where explicitly quoted.",
+        "transfer_fee_basis_points": 200
+      },
+      "rewards_and_loyalty": {
+        "enabled": true,
+        "description": "Power fan rewards, loyalty programs, campaigns, quests, referrals, and ecosystem incentive programs."
+      },
+      "community": {
+        "enabled": true,
+        "description": "Coordinate memberships, community participation, access tiers, campaigns, and ecosystem contribution programs."
+      },
+      "payments": {
+        "enabled": true,
+        "description": "Use SONIC as an optional settlement asset across supported SONIC applications alongside SOL, USDC, and EURC."
+      },
+      "ecosystem_participation": {
+        "enabled": true,
+        "description": "Coordinate incentives across SONIC Studio, applications, marketplace, creator services, APIs, and on-chain integrations."
+      }
+    }
   }
 }
