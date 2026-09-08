@@ -1,0 +1,50 @@
+{
+  "name": "SONIC",
+  "symbol": "SONIC",
+  "description": "SONIC is the native Token-2022 asset of SONIC Network, designed for creator rewards, ecosystem participation, tokenized content, platform utility, and on-chain creator commerce.",
+  "image": "https://raw.githubusercontent.com/sonicaiworks/token/69fcf09dade8bbd66f77585d529043cf1981e0e4/public/assets/sonic.png",
+  "external_url": "https://sonicnetwork.app",
+  "attributes": [
+    {
+      "trait_type": "Network",
+      "value": "Solana"
+    },
+    {
+      "trait_type": "Token Standard",
+      "value": "Token-2022"
+    },
+    {
+      "trait_type": "Decimals",
+      "value": 9
+    },
+    {
+      "trait_type": "Version",
+      "value": "1.0.0"
+    },
+    {
+      "trait_type": "Status",
+      "value": "Pre-deployment"
+    }
+  ],
+  "properties": {
+    "category": "token",
+    "files": [
+      {
+        "uri": "https://raw.githubusercontent.com/sonicaiworks/token/69fcf09dade8bbd66f77585d529043cf1981e0e4/public/assets/sonic.png",
+        "type": "image/png"
+      }
+    ]
+  },
+  "extensions": {
+    "website": "https://sonicnetwork.ai",
+    "tokenomics": "https://token.sonicnetwork.app",
+    "api": "https://api.sonicnetwork.app",
+    "x": "https://x.com/SonicAIWorks",
+    "telegram": "https://t.me/+DsJSBq-4wn03NDU0",
+    "youtube": "https://youtube.com/@sonicaiworks",
+    "github": "https://github.com/sonicaiworks",
+    "documentation": "https://docs.sonicnetwork.app",
+    "application": "https://sonicnetwork.app",
+    "platform": "https://studio.sonicnetwork.app"
+  }
+}
