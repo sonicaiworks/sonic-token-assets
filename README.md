@@ -1,141 +1,178 @@
-SONIC Tokenomics
+# SONIC Token Runtime
 
-Version: 1.0.0
-Status: Pre-deployment
-Network: Solana
-Token Standard: Token-2022
+Production-oriented Token-2022 runtime for SONIC Network.
 
-> SONIC is the native Token-2022 asset of SONIC NETWORK, designed for creator rewards, ecosystem participation, tokenized content, platform utility, and on-chain creator commerce.
+> **Deployment state:** no verified SONIC mint address exists in the current `sonicaiworks/token` repository. `SONIC_TOKEN_MINT` therefore remains blank until `scripts/create-token-2022-mint.ts` is executed and the resulting address is independently verified. Never substitute another project’s SONIC mint.
 
-Token specification
+Canonical policy
 
-|Property                              |Value                   |
-|--------------------------------------|------------------------|
-|Token                                 |SONIC                   |
-|Network                               |Solana                  |
-|Standard                              |Token-2022              |
-|Initial maximum supply                |**18,446,000,000 SONIC**|
-|Decimals                              |**9**                   |
-|Production mint address               |**TBA**                 |
-|Token-2022 transfer fee               |**2% / 200 bps**        |
-|Maximum transfer-fee rate (policy cap)|**5% / 500 bps**        |
-|Token-2022 maximum fee amount         |**TBA**                 |
-|Quarterly burn                        |**2%**                  |
-|Burn calculation base                 |**TBA**                 |
-|Locked supply                         |**3,000,000,000 SONIC** |
-|Locked share of initial maximum supply|**16.26%**              |
-|Lock infrastructure                   |**Streamflow Finance**  |
-|Streamflow contract / stream ID       |**TBA**                 |
+|Parameter                     |Value                                                    |
+|------------------------------|---------------------------------------------------------|
+|Network                       |Solana                                                   |
+|Standard                      |Token-2022                                               |
+|Decimals                      |9                                                        |
+|Initial maximum supply        |18,446,000,000 SONIC                                     |
+|Atomic maximum supply         |18,446,000,000,000,000,000                               |
+|Token-2022 transfer fee       |200 bps / 2%                                             |
+|SONIC fee-rate policy cap     |500 bps / 5%                                             |
+|Absolute Token-2022 maximumFee|Deployment input; not invented                           |
+|Quarterly burn policy         |200 bps / 2%; disabled until calculation base is approved|
+|Locked supply designation     |3,000,000,000 SONIC via Streamflow policy                |
 
-Supply accounting
+The atomic maximum deliberately fits within a Solana u64, leaving 744,073,709,551,615 atomic units of headroom.
 
-SONIC treats these states separately:
+Architecture
 
-Initial Maximum Supply → Allocated Supply → Locked / Unlocked Supply → Circulating Supply
+```text
+programs/sonic/token/src/      Anchor policy registry
+scripts/                       Mint/genesis/verify/pricing CLIs
+env/                           Typed runtime environment
+constants/                     Program IDs, token policy, URLs
+context/                       Request/token context
+components/services/           Provider adapters
+lib/                           RPC, token, cache, rate limit, safe actions
+utils/                         Errors, amount helpers
+common/                        API response/price contracts
+types/                         Actions, status, chart types
+data/                          Metadata, tokenomics, deployment manifest
+app/api/v1/                    SONIC Token REST API
+api/swagger/                   OpenAPI 3.1
+postman/                       Postman collection
+tests/                         Policy/unit tests
+target/                        Generated Anchor artifacts (gitignored)
+```
 
-A token being allocated does not make it unlocked or circulating.
+Install
 
-Distribution
+```bash
+corepack enable
+pnpm install
+cp .env.example .env.local
+pnpm validate
+pnpm test
+pnpm typecheck
+pnpm dev
+```
 
-|Allocation            |Share   |SONIC             |Release model   |
-|----------------------|-------:|-----------------:|----------------|
-|Ecosystem & Community |20%     |3,689,200,000     |Programmatic    |
-|Protocol Treasury     |20%     |3,689,200,000     |Controlled      |
-|Core Contributors     |15%     |2,766,900,000     |Vesting         |
-|Creator Rewards       |10%     |1,844,600,000     |Reward programs |
-|Liquidity & Markets   |10%     |1,844,600,000     |Liquidity policy|
-|Strategic Partners    |10%     |1,844,600,000     |Vesting         |
-|Community Distribution|10%     |1,844,600,000     |Programmatic    |
-|Foundation & Grants   |5%      |922,300,000       |Milestone-based |
-|**Total**             |**100%**|**18,446,000,000**|                |
+Mint lifecycle
 
-> **3,000,000,000 SONIC (16.26% of initial maximum supply)** is designated for Streamflow-based locking. This is a supply state, not an additional allocation. Source allocation(s), lock type, dates and verified on-chain identifier remain TBA.
+```text
+POLICY_VALIDATED
+      ↓
+TOKEN-2022 MINT CREATED
+      ↓
+METADATA INITIALIZED
+      ↓
+MINT ADDRESS RECORDED
+      ↓
+ON-CHAIN VERIFICATION
+      ↓
+GENESIS SUPPLY MINTED
+      ↓
+TREASURY RECONCILED
+      ↓
+OPTIONAL MINT AUTHORITY REVOCATION
+      ↓
+PRODUCTION REGISTRY PUBLISHED
+```
 
-Token-2022 transfer fee
+1. Configure the absolute transfer-fee maximum
 
-Applicable SONIC transfers use a 2% / 200 bps Token-2022 transfer fee.
+Token-2022 requires an absolute maximumFee token amount in addition to the 200 bps rate. Set it explicitly:
 
-> **Fee policy:** SONIC launches with a **2% / 200 bps** Token-2022 transfer-fee rate. The documented policy cap is **5% / 500 bps**. Any future fee-rate change must remain at or below this cap and should require the configured authority/governance process. The Token-2022 `maximumFee` field is an absolute token-amount cap and remains TBA until deployment.
+```bash
+SONIC_TRANSFER_FEE_MAXIMUM_FEE_ATOMIC=<approved-u64-amount>
+```
 
-This must be reported separately from:
+2. Create mint
 
-• Solana network fees
-• priority fees
-• marketplace service fees
-• SONIC Swap service fees
-• DEX, routing and provider fees
+```bash
+pnpm mint:create
+```
 
-Production deployment must publish:
+This creates a Token-2022 mint with TransferFeeConfig and MetadataPointer, initializes native Token-2022 metadata, and writes the result to the gitignored data/deployment.local.json.
 
-• maximum fee amount (absolute Token-2022 cap)
-• maximum transfer-fee rate policy cap: 5% / 500 bps
-• transfer-fee configuration authority
-• withdraw-withheld authority
-• verified mint address
+3. Publish mint address into environment
 
-Quarterly burn
+```bash
+SONIC_TOKEN_MINT=<actual-created-address>
+```
 
-SONIC has a 2% quarterly burn policy.
+4. Verify
 
-The 2% calculation base remains TBA and must be finalized before activation. Do not describe the burn as 2% of total, circulating, treasury, or fee inventory until the policy explicitly selects one.
+```bash
+pnpm verify:onchain
+```
 
-Lifecycle
+5. Genesis mint
 
-SCHEDULED → CALCULATED → AUTHORIZED → SUBMITTED → CONFIRMED → BURNED → RECONCILED
+Set SONIC_TREASURY_ADDRESS, then:
 
-Every burn should publish the burn amount, calculation base, supply before/after, transaction signature, authority and confirmation timestamp.
+```bash
+pnpm mint:genesis
+```
 
-Locked supply
+The script refuses to run when mint supply is already non-zero. Set SONIC_REVOKE_MINT_AUTHORITY_AFTER_GENESIS=true only after the final issuance policy is approved.
 
-3,000,000,000 SONIC is designated for lock/vesting infrastructure through Streamflow Finance.
+API
 
-Required production disclosure:
+• GET /api/v1/health
+• GET /api/v1/token
+• GET /api/v1/token/mint
+• GET /api/v1/token/metadata
+• GET /api/v1/token/supply
+• GET /api/v1/token/verify
+• GET /api/v1/token/fees?amountAtomic=
+• GET /api/v1/token/price?mint=
+• GET /api/v1/token/holders?mint=
+• GET /api/v1/token/market?mint=
+• GET /api/v1/market/swap-quote?inputMint=&outputMint=&amount=
+• GET /api/v1/integrations/health
+• GET /api/v1/actions
+• POST /api/v1/music/generate (internal key + configured Suno Platform only)
+• GET /api/swagger
 
-• source allocation(s)
-• lock vs vesting type
-• beneficiary
-• start date
-• cliff / unlock date
-• release schedule
-• Streamflow contract / stream ID
-• creation transaction
+Live data routing
 
-Creator Rewards
+```text
+Pyth (only configured feed IDs)
+  ↓
+Jupiter Price V3
+  ↓
+Birdeye
+  ↓
+CoinGecko / GeckoTerminal
+  ↓
+Helius DAS
+  ↓
+Solscan
+  ↓
+Raydium
+  ↓
+Orca
+```
 
-10% = 1,844,600,000 SONIC
+Pyth is not assigned a fake SONIC feed ID. Until a verified SONIC Pyth feed exists, SONIC market pricing falls through to market/indexer sources.
 
-Lifecycle
+Program IDs
 
-ESTIMATED → ELIGIBLE → ALLOCATED → CLAIMABLE → SUBMITTED → CONFIRMED → SETTLED → RECONCILED
+The repo pins verified public IDs for System Program, SPL Token, Token-2022, Associated Token, Metaplex Token Metadata, Bubblegum V2, Account Compression, SPL Noop, and current Pyth receiver/price-feed programs in constants/programs.ts.
 
-Leaderboard position, engagement, token ownership, or community participation alone does not create an entitlement. Eligibility and a funded allocation are required.
+The custom Anchor program ID in this scaffold is a development placeholder. Run anchor build && anchor keys sync before deploying it.
 
-Fee separation
+External providers
 
-|Fee domain                   |Policy                 |
-|-----------------------------|----------------------:|
-|Token-2022 transfer fee      |**2% / 200 bps**       |
-|Marketplace service fee      |**3% where applicable**|
-|SONIC Swap service fee       |**2% / 200 bps**       |
-|Solana network fee           |Variable               |
-|Priority fee                 |Variable               |
-|DEX / routing / provider fees|Provider-defined       |
+Adapters are included for Helius RPC/DAS, Pyth Hermes, Jupiter, Birdeye, CoinGecko, Solscan, Raydium, Meteora DLMM, Orca, Magic Eden and Suno Platform. API-key-backed services are disabled until their secrets are configured.
 
-The checkout and transaction UI should quote each fee separately before wallet signature.
+Security
 
-Authority matrix
+Minting is intentionally CLI-only, not an HTTP endpoint. The API provides read/verify/quote surfaces, and the Suno write proxy requires x-sonic-api-key. For production, replace in-memory rate limiting/cache with shared infrastructure if the API runs across multiple server instances.
 
-|Authority                    |Production value|
-|-----------------------------|----------------|
-|Mint authority               |TBA             |
-|Freeze authority             |TBA             |
-|Transfer-fee config authority|TBA             |
-|Withdraw-withheld authority  |TBA             |
-|Burn execution authority     |TBA             |
-|Metadata update authority    |TBA             |
+Documentation
 
-If SONIC is presented as fixed-supply after genesis, the production documentation should state whether the mint authority is revoked after the intended supply is minted.
-
-Production status
-
-SONIC is currently documented as pre-deployment. The mint address, Streamflow identifier, Token-2022 authorities, Token-2022 maximum fee amount, quarterly burn calculation base, lock schedule and related transaction references must be published only after deployment and verification.
+• docs/token/ — full SONIC token/tokenomics/security documentation
+• docs/runtime/API.md — API v1 route contract
+• docs/runtime/PROVIDERS.md — live provider architecture
+• api/swagger/openapi.yaml — OpenAPI 3.1
+• postman/SONIC-Token-API.postman_collection.json — Postman collection
+• VALIDATION_REPORT.md — executed validation status and environment limitations
