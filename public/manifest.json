@@ -1,0 +1,131 @@
+{
+  "name": "SONIC public assets",
+  "version": "1.0.0",
+  "repository": "https://github.com/sonicaiworks/token",
+  "sourceCommitReviewed": "be1d5b3fe8382dc84bf5d9d392f0384480c01109",
+  "canonical": {
+    "tokenPng": "/assets/sonic.png",
+    "vectorMark": "/icons/logo/sonic.svg",
+    "coinPng": "/assets/coin.png",
+    "webImage": "/images/sonic.webp"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2419,
+      "sha256": "7d2fed9cd3ffe5ea32055467bf675d0981f51c77703d81a1ae99f36414c885a0"
+    },
+    {
+      "path": "assets/README.md",
+      "bytes": 719,
+      "sha256": "7c7a800235762c7edfdd8849b14e1ba6bc9a4863f98e34cc360efad4aa5af5de"
+    },
+    {
+      "path": "assets/coin.png",
+      "bytes": 1328705,
+      "sha256": "6875ccfd73bb1893fbe996449afddefdd618efb57a68169d9b6a93944b407cb5",
+      "width": 1500,
+      "height": 1500,
+      "mode": "RGB"
+    },
+    {
+      "path": "assets/sonic.png",
+      "bytes": 1023512,
+      "sha256": "8c81606934d6aa3c7761c23be28cc1d42de519d9cba8ad6d90312c22bf16c79d",
+      "width": 1025,
+      "height": 1025,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/sonic.svg",
+      "bytes": 5929,
+      "sha256": "213a399fcd08b19e8eadfdf1ce8f362d3a61fc79a8cf3a57b541718b9d325b84"
+    },
+    {
+      "path": "icons/README.md",
+      "bytes": 627,
+      "sha256": "94f88ad5fcebf2a0b32e86cecb19f90ec05be8081d7e9211b0745d9c66a6c942"
+    },
+    {
+      "path": "icons/logo/coin.png",
+      "bytes": 253349,
+      "sha256": "cca8bf2fd8881e688bf552c2d075f4e8f718c3dc1681916a59be939f2ecda1b4",
+      "width": 512,
+      "height": 512,
+      "mode": "RGB"
+    },
+    {
+      "path": "icons/logo/sonic-128.png",
+      "bytes": 24275,
+      "sha256": "6a53b050d3c1a829e881d0133ef7e401186a5c954da90f8922848ce21db20009",
+      "width": 128,
+      "height": 128,
+      "mode": "RGBA"
+    },
+    {
+      "path": "icons/logo/sonic-256.png",
+      "bytes": 80029,
+      "sha256": "476a0c2aeb29bf2fdc4a26277e5189ffdc1c6598e599f42981207edb5452b8aa",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "icons/logo/sonic-512.png",
+      "bytes": 264119,
+      "sha256": "09c9b11d75f8b255b1c03315e5d4e6306a29bab681cb308f6aca27699fe3234f",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA"
+    },
+    {
+      "path": "icons/logo/sonic-black.svg",
+      "bytes": 5922,
+      "sha256": "12afa14b76c7dcf6bfb3ed414dcd852e221bb05799e5ff315d420f1321c90593"
+    },
+    {
+      "path": "icons/logo/sonic-white.svg",
+      "bytes": 5922,
+      "sha256": "5e7ad83c1a317d17f925832e4296891e716b25ce8a7a92eac8374a2032f3bccf"
+    },
+    {
+      "path": "icons/logo/sonic.png",
+      "bytes": 1023512,
+      "sha256": "8c81606934d6aa3c7761c23be28cc1d42de519d9cba8ad6d90312c22bf16c79d",
+      "width": 1025,
+      "height": 1025,
+      "mode": "RGBA"
+    },
+    {
+      "path": "icons/logo/sonic.svg",
+      "bytes": 5929,
+      "sha256": "213a399fcd08b19e8eadfdf1ce8f362d3a61fc79a8cf3a57b541718b9d325b84"
+    },
+    {
+      "path": "icons/sonic.svg",
+      "bytes": 5929,
+      "sha256": "213a399fcd08b19e8eadfdf1ce8f362d3a61fc79a8cf3a57b541718b9d325b84"
+    },
+    {
+      "path": "images/README.md",
+      "bytes": 351,
+      "sha256": "64f85e9ac9a32e23f52041a3df5d550061704203372bd3ea377ee9b98954addc"
+    },
+    {
+      "path": "images/sonic-red.webp",
+      "bytes": 79880,
+      "sha256": "f38b606495629bec6eb607b4425a287734e2aaf2c61b415e94c19e1a1c571955",
+      "width": 1025,
+      "height": 1025,
+      "mode": "RGBA"
+    },
+    {
+      "path": "images/sonic.webp",
+      "bytes": 176790,
+      "sha256": "ab20f5afaa713e274329800b093214f67e22fb3f0192df22f97a85f55d0c41c6",
+      "width": 1500,
+      "height": 1500,
+      "mode": "RGB"
+    }
+  ]
+}
