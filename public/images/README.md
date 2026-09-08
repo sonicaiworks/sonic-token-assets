@@ -1,10 +1,16 @@
+<div align="center">
+
 # SONIC Web Images
 
-Optimized website imagery.
+### Optimized imagery for SONIC Network web and application surfaces
 
-| File | Source | Use |
+</div>
+
+---
+
+| File | Visual | Recommended use |
 |---|---|---|
-| `sonic.webp` | Silver SONIC coin | Primary token/tokenomics visual |
-| `sonic-red.webp` | Red SONIC token artwork | Alternate brand/token visual |
+| `sonic.webp` | Silver SONIC coin | Tokenomics hero, token cards, marketing |
+| `sonic-red.webp` | Red SONIC token | Product surfaces, alternate brand usage |
 
-Use these files for marketing and product surfaces where WebP is supported. Keep metadata/wallet fallbacks in PNG.
+Use these WebP assets for modern web delivery. Wallets, explorers, metadata systems, or third-party integrations that require wider compatibility should use PNG assets from `../assets/` or `../icons/logo/`.

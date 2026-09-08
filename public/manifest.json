@@ -2,7 +2,6 @@
   "name": "SONIC public assets",
   "version": "1.0.0",
   "repository": "https://github.com/sonicaiworks/token",
-  "sourceCommitReviewed": "be1d5b3fe8382dc84bf5d9d392f0384480c01109",
   "canonical": {
     "tokenPng": "/assets/sonic.png",
     "vectorMark": "/icons/logo/sonic.svg",
@@ -12,13 +11,13 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2419,
-      "sha256": "7d2fed9cd3ffe5ea32055467bf675d0981f51c77703d81a1ae99f36414c885a0"
+      "bytes": 3191,
+      "sha256": "022996bc7f35b2affba023efc4fbd9ecd09d716537018d44684387ffe88f6016"
     },
     {
       "path": "assets/README.md",
-      "bytes": 719,
-      "sha256": "7c7a800235762c7edfdd8849b14e1ba6bc9a4863f98e34cc360efad4aa5af5de"
+      "bytes": 1047,
+      "sha256": "5ca524ea18647f31f85ca8016fe490bc66a8d28c538644ed551ef422d9485cf0"
     },
     {
       "path": "assets/coin.png",
@@ -43,8 +42,8 @@
     },
     {
       "path": "icons/README.md",
-      "bytes": 627,
-      "sha256": "94f88ad5fcebf2a0b32e86cecb19f90ec05be8081d7e9211b0745d9c66a6c942"
+      "bytes": 956,
+      "sha256": "143d8ca258bd959b05927418e712930ddabfc1e012524c86fdf3887ac590945f"
     },
     {
       "path": "icons/logo/coin.png",
@@ -108,8 +107,8 @@
     },
     {
       "path": "images/README.md",
-      "bytes": 351,
-      "sha256": "64f85e9ac9a32e23f52041a3df5d550061704203372bd3ea377ee9b98954addc"
+      "bytes": 543,
+      "sha256": "5e14b98d34f0f71dff0845994cf3bfdb95d30636814cc729664d90990b30d536"
     },
     {
       "path": "images/sonic-red.webp",

@@ -1,21 +1,37 @@
+<div align="center">
+
 # SONIC Token Assets
 
-Source/reference assets for SONIC Token.
+### Canonical source and reference artwork
 
-| File | Description | Format |
-|---|---|---|
-| `sonic.png` | Canonical red SONIC token artwork | PNG / RGBA |
-| `sonic.svg` | Vector SONIC waveform mark | SVG |
-| `coin.png` | Silver SONIC coin artwork | PNG |
+</div>
 
-These are source/reference assets. Web-specific derivatives belong in `../images/`; reusable UI marks belong in `../icons/`.
+---
+
+## Files
+
+| File | Description | Format | Canonical role |
+|---|---|---|---|
+| `sonic.png` | Red SONIC token artwork | PNG | Token icon / metadata source |
+| `sonic.svg` | SONIC waveform mark | SVG | Vector source |
+| `coin.png` | Silver SONIC coin artwork | PNG | Tokenomics / marketing source |
 
 ## Recommended mapping
 
 ```text
-Token metadata icon       → sonic.png
-Scalable logo/brand mark  → sonic.svg
-Tokenomics coin visual    → coin.png
+Token metadata / wallet icon  → sonic.png
+Scalable SONIC mark           → sonic.svg
+Tokenomics / hero coin        → coin.png
 ```
 
-For final on-chain metadata, publish the selected token icon and JSON metadata through an immutable storage strategy before setting the production metadata URI.
+## Source policy
+
+`assets/` is the canonical source/reference layer.
+
+Optimized website derivatives belong in `../images/`. Reusable interface marks belong in `../icons/`.
+
+Do not overwrite source assets with resized, compressed, recolored, or platform-specific derivatives.
+
+## Mainnet metadata
+
+For final Token-2022 metadata publication, publish the selected token artwork and metadata JSON using a durable immutable storage strategy before setting the production metadata URI.

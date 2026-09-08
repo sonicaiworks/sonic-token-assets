@@ -1,6 +1,12 @@
+<div align="center">
+
 # SONIC Icons
 
-Reusable SONIC logo/icon assets.
+### Vector and raster logo variants for application UI
+
+</div>
+
+---
 
 ```text
 icons/
@@ -16,9 +22,18 @@ icons/
     └── sonic-128.png
 ```
 
-- `sonic.svg` / `logo/sonic.svg`: canonical vector mark.
-- `sonic-black.svg`: dark monochrome variant.
-- `sonic-white.svg`: light monochrome variant.
-- `sonic.png`: full square red token artwork.
-- `coin.png`: silver coin preview/icon.
-- sized PNGs: raster fallbacks for clients requiring fixed dimensions.
+## Logo variants
+
+| File | Purpose |
+|---|---|
+| `sonic.svg` | Shared canonical vector mark |
+| `logo/sonic.svg` | Primary scalable logo |
+| `logo/sonic-black.svg` | Dark mark for light surfaces |
+| `logo/sonic-white.svg` | Light mark for dark surfaces |
+| `logo/sonic.png` | Full red token icon |
+| `logo/sonic-512.png` | 512px raster fallback |
+| `logo/sonic-256.png` | 256px raster fallback |
+| `logo/sonic-128.png` | 128px raster fallback |
+| `logo/coin.png` | Silver coin preview/icon |
+
+Prefer SVG for product UI unless a target platform explicitly requires raster output.
