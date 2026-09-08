@@ -23,7 +23,7 @@
     },
     {
       "trait_type": "Status",
-      "value": "Pre-deployment"
+      "value": "production"
     }
   ],
   "properties": {
